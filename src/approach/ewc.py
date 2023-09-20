@@ -2,7 +2,7 @@ from turtle import width
 import torch
 import itertools
 from argparse import ArgumentParser
-
+from torchvision.datasets import MNIST
 from datasets.exemplars_dataset import ExemplarsDataset
 from .incremental_learning import Inc_Learning_Appr
 from widths.config import FLAGS
@@ -12,7 +12,7 @@ class Appr(Inc_Learning_Appr):
     described in http://arxiv.org/abs/1612.00796
     """
 
-    def __init__(self, model, device, nepochs=100, lr=0.05, decay_mile_stone=[80,120], lr_decay=0.1, clipgrad=10000,
+    def __init__(self, model, device, nepochs=10, lr=0.05, decay_mile_stone=[80,120], lr_decay=0.1, clipgrad=10000,
                  momentum=0, wd=0, multi_softmax=False, scroll_step=1, fix_bn=False, eval_on_train=False,
                  logger=None, exemplars_dataset=None, lamb=5000, alpha=0.5, fi_sampling_type='max_pred',
                  fi_num_samples=-1):
